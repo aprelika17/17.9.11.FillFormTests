@@ -3,7 +3,6 @@ package quru.qa.tests;
 import org.junit.jupiter.api.Test;
 
 public class FillFormTestsWithFaker extends TestBase {
-
     @Test
     void fillFormSuccess() {
         TestData testData = new TestData();
@@ -12,6 +11,7 @@ public class FillFormTestsWithFaker extends TestBase {
         registrationPage.openPage()
                 .setFirstName(testData.firstName);
         System.out.println(testData.firstName);
+
         registrationPage.setLastName(testData.lastName);
         System.out.println(testData.lastName);
         registrationPage.setUserEmail(testData.userEmail);
