@@ -1,7 +1,10 @@
 package quru.qa.tests;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
+@Tag("remote")
 public class FillFormTests extends TestBase {
 
     @Test
