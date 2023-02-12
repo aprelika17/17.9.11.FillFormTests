@@ -20,7 +20,7 @@ public class TestData {
             subject = faker.options().option("English", "Commerce", "Economics", "Math"),
             hobby = faker.options().option("Sports", "Reading", "Music"),
             currentAddress = faker.address().fullAddress(),
-            state = faker.options().option("NCR", "Uttar Pradesh", "Haryanna", "Rajasthan"),
+            state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
             city = setRandomCity(state),
             happyText = "Thanks for submitting the form";
 
@@ -31,6 +31,4 @@ public class TestData {
         else if (state.equals("Rajasthan")) return faker.options().option("Jaipur", "Jaiselmer");
         return "";
     }
-
-
 }
