@@ -1,5 +1,7 @@
 package quru.qa.tests;
 
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,10 @@ import static io.qameta.allure.Allure.step;
 public class FillFormTests extends TestBase {
 
     @Test
+    @DisplayName("Тест на заполнение формы demoqa.com")
+    @Owner("amenkova")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "demoqa.com", url = "https://demoqa.com/automation-practice-form")
     void fillFormSuccess() {
         TestData testData = new TestData();
 
