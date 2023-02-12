@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 @Tag("remote")
 public class FillFormTests extends TestBase {
 
@@ -11,34 +13,40 @@ public class FillFormTests extends TestBase {
     void fillFormSuccess() {
         TestData testData = new TestData();
 
-        //Старт теста
-        registrationPage.openPage()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setUserEmail(testData.userEmail)
-                .setUserGender(testData.gender)
-                .setUserNumber(testData.userNumber)
-                .setUserBirthDate(testData.day, testData.month, testData.year)
-                .setSubject(testData.subject)
-                .setUserHobby(testData.hobby)
-                .uploadFile()
-                .setAddress(testData.currentAddress)
-                .setStateAndCity(testData.state, testData.city)
-                .pressSubmit();
+        step("Открываем форму для тестирования", () -> {
+            registrationPage.openPage();
+        });
 
-        //Проверки
-        registrationPage.verifyResultsModalAppears(testData.happyText)
-                .verifyResult("Student Name", (testData.firstName + " " + testData.lastName))
-                .verifyResult("Student Email", testData.userEmail)
-                .verifyResult("Gender", testData.gender)
-                .verifyResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
-                .verifyResult("Subjects", testData.subject)
-                .verifyResult("Hobbies", testData.hobby)
-                .verifyResult("Picture", "File.jpg")
-                .verifyResult("Address", testData.currentAddress)
-                .verifyResult("State and City", (testData.state + " " + testData.city));
+        step("Заполняем данными форму для тестирования", () -> {
+            registrationPage.setFirstName(testData.firstName)
+                    .setLastName(testData.lastName)
+                    .setUserEmail(testData.userEmail)
+                    .setUserGender(testData.gender)
+                    .setUserNumber(testData.userNumber)
+                    .setUserBirthDate(testData.day, testData.month, testData.year)
+                    .setSubject(testData.subject)
+                    .setUserHobby(testData.hobby)
+                    .uploadFile()
+                    .setAddress(testData.currentAddress)
+                    .setStateAndCity(testData.state, testData.city)
+                    .pressSubmit();
+        });
 
-        //Закрыть модалку
-        registrationPage.pressCloseModal();
+        step("Проверка результата", () -> {
+            registrationPage.verifyResultsModalAppears(testData.happyText)
+                    .verifyResult("Student Name", (testData.firstName + " " + testData.lastName))
+                    .verifyResult("Student Email", testData.userEmail)
+                    .verifyResult("Gender", testData.gender)
+                    .verifyResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
+                    .verifyResult("Subjects", testData.subject)
+                    .verifyResult("Hobbies", testData.hobby)
+                    .verifyResult("Picture", "File.jpg")
+                    .verifyResult("Address", testData.currentAddress)
+                    .verifyResult("State and City", (testData.state + " " + testData.city));
+        });
+
+        step("Закрыть модальное окно с проверкой", () -> {
+            registrationPage.pressCloseModal();
+        });
     }
 }
