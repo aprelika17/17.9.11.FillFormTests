@@ -2,7 +2,7 @@ package quru.qa.tests;
 
 import org.junit.jupiter.api.Test;
 
-public class FillFormTestsWithFaker extends TestBase {
+public class FillFormTests extends TestBase {
 
     @Test
     void fillFormSuccess() {
