@@ -19,10 +19,10 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("resolution", "1920x1080");
+        Configuration.browser = System.getProperty("browser","chrome");
+        Configuration.browserVersion = System.getProperty("version","100.0");
+        Configuration.remote = System.getProperty("selenoid");
         Configuration.holdBrowserOpen = false;
-        Configuration.remote = System.getProperty("remote_url");
-        Configuration.browser = System.getProperty("browser_name","chrome");
-        Configuration.browserVersion = System.getProperty("browser_ver");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
