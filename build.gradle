@@ -51,3 +51,7 @@ task remote_test(type: Test) {
         includeTags("remote")
     }
 }
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
